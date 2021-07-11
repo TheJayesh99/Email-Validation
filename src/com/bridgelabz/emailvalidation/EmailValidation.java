@@ -11,7 +11,7 @@ public class EmailValidation
 		EmailValidation emailCheck1 = new EmailValidation();
 		String str1 = "abc";
 		emailCheck1.checkFirstLetter(str1);
-				
+
 		//uc2 - Ensure @ and validate the mandatory 2nd part
 		EmailValidation emailCheck2 = new EmailValidation();
 		String str2 = "@bridgelabz";
@@ -21,10 +21,30 @@ public class EmailValidation
 		EmailValidation emailCheck3 = new EmailValidation();
 		String str3 = ".co";
 		emailCheck3.checkTLD(str3);
+		
+		//uc4 - To check optional user name to be correct
+		EmailValidation emailCheck4 = new EmailValidation();
+		String str4 = ".xyz";
+		emailCheck4.checkOptionalUserName(str4);
+	}
+
+	// check optional user name that it should start with [ +,-, ., _ ] and then have letters or numbers  
+	private void checkOptionalUserName(String str4) 
+	{
+		boolean isMatched = Pattern.compile("(^[.,+,_,-]{1}[0-9a-zA-Z]+)*").matcher(str4).matches();
+		if (isMatched) 
+		{			
+			System.out.println("optional user name is correct");
+		}
+		else
+		{			
+			System.out.println("optional user name is not correct");
+		}
 	}
 
 	//check email TDL should have "." and TDL
-	private void checkTLD(String str3) {
+	private void checkTLD(String str3) 
+	{
 		boolean isMatched = Pattern.compile(".[a-zA-Z]{2,3}").matcher(str3).matches();
 		if (isMatched) 
 		{			
