@@ -16,12 +16,30 @@ public class EmailValidation
 		EmailValidation emailCheck2 = new EmailValidation();
 		String str2 = "@bridgelabz";
 		emailCheck2.checkDomainName(str2);
+
+		//uc3 - Ensure . and validate the mandatory 3rd part
+		EmailValidation emailCheck3 = new EmailValidation();
+		String str3 = ".co";
+		emailCheck3.checkTLD(str3);
 	}
 
-	//check email should start @ and have domain name
+	//check email TDL should have "." and TDL
+	private void checkTLD(String str3) {
+		boolean isMatched = Pattern.compile(".[a-zA-Z]{2,3}").matcher(str3).matches();
+		if (isMatched) 
+		{			
+			System.out.println("Top level Domain name is correct");
+		}
+		else
+		{			
+			System.out.println("top level Domain name is not correct");
+		}
+	}
+
+	//check email should have @ and have domain name
 	private void checkDomainName(String str2)
 	{
-		boolean isMatched = Pattern.compile("^@[a-zA-Z]+").matcher(str2).matches();
+		boolean isMatched = Pattern.compile("@[a-zA-Z]+").matcher(str2).matches();
 		if (isMatched) 
 		{			
 			System.out.println("Domain name is correct");
