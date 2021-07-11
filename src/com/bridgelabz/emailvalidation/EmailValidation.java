@@ -26,6 +26,26 @@ public class EmailValidation
 		EmailValidation emailCheck4 = new EmailValidation();
 		String str4 = ".xyz";
 		emailCheck4.checkOptionalUserName(str4);
+		
+		//uc5- To check optional domain name 
+		EmailValidation emailCheck5 = new EmailValidation();
+		String str5 = ".in";
+		emailCheck5.checkOptionalDomainName(str5);
+		
+	}
+
+	//check optional domain name should start with . and have only 2 letters 
+	private void checkOptionalDomainName(String str5) 
+	{
+		boolean isMatched = Pattern.compile("([.]{1}[a-zA-Z]{2})?").matcher(str5).matches();
+		if (isMatched) 
+		{			
+			System.out.println("Optional domain name is correct");
+		}
+		else
+		{			
+			System.out.println("Optional domain name is not correct");
+		}
 	}
 
 	// check optional user name that it should start with [ +,-, ., _ ] and then have letters or numbers  
@@ -34,11 +54,11 @@ public class EmailValidation
 		boolean isMatched = Pattern.compile("(^[.,+,_,-]{1}[0-9a-zA-Z]+)*").matcher(str4).matches();
 		if (isMatched) 
 		{			
-			System.out.println("optional user name is correct");
+			System.out.println("Optional user name is correct");
 		}
 		else
 		{			
-			System.out.println("optional user name is not correct");
+			System.out.println("Optional user name is not correct");
 		}
 	}
 
@@ -59,7 +79,7 @@ public class EmailValidation
 	//check email should have @ and have domain name
 	private void checkDomainName(String str2)
 	{
-		boolean isMatched = Pattern.compile("@[a-zA-Z]+").matcher(str2).matches();
+		boolean isMatched = Pattern.compile("@[0-9a-zA-Z]+").matcher(str2).matches();
 		if (isMatched) 
 		{			
 			System.out.println("Domain name is correct");
